@@ -16,50 +16,70 @@ const questions = [
     {
         name: "descripton", 
         type: "input",
-        message: "give your Readme a description "
+        message: "Give your Readme a description "
     },
     {
         name: "table of contents", 
         type: "input",
-        message: "input your table of contents "
+        message: "Give your Readme a table of contents "
     },
     {
         name: "installations",
         type: "input",
-        message: "list installations for Readme "
+        message: "List installations for Readme "
     },
     {
         name: "usage",
         type: "input",
-        message: "what is your Readme used for? "
+        message: "What is your Readme used for? "
     },
     {
         name: "license",
         type: "input",
-        message: "what are your licenses for your readme? "
+        message: "What are your licenses for your readme? "
     },
     {
         name: "contributing",
         type: "input",
-        message: "what is your Readme contributing? "
+        message: "What are the contributions of your Readme? "
     },
     {
         name: "tests",
         type: "input",
-        message: "how do you run your tests in your readme? "
+        message: "Run tests for your readme "
     },
     {
         name: "questions",
         type: "input",
-        message: "input your questions for your readme "
+        message: "What are your questions for your Readme? "
     }
 ];
 
+// function to write readme file
+const promptUser = () => {
+    return inquirer.prompt(questions);
+}
+
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// function to write readme file
+function writeToFile(fileName, data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./output/README.md', data, err => {
+            if (err) {
+                reject(err);
+                return
+            }
+            resolve ({
+                ok: true,
+                message: 'Readme file created'
+            })
+        })
+    })
+}
 
 // TODO: Create a function to initialize app
+// function to start program
 function init() {}
 
 // Function call to initialize app
